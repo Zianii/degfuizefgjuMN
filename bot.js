@@ -27,26 +27,14 @@ const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const sql = require("sqlite");
 const dateFormat = require('dateformat'); 
 const pretty = require('pretty-ms') 
-const prefix = 'F.';
+const prefix = '-';
 var table = require('table').table
 var ti={}  
 ,spee={}
 ,attentions={};
 
-client.on('ready', function(){
-    var ms = 60000 ;
-    var setGame = [`${client.guilds.size} Server`,'F.help','Type F.help',`${client.users.size} Members`,'F.inv','By: Abdallah | YT : AbdallahZ'];
-    var i = -1;
-    var j = 0;
-    setInterval(function (){
-        if( i == -1 ){
-            j = 1;
-        }
-        if( i == (setGame.length)-1 ){
-            j = -1;
-        }
-        i = i+j;
-        client.user.setGame(setGame[i],`http://www.twitch.tv/Fearless`);
+
+        client.user.setGame(setGame[i],`http://www.twitch.tv/FearlessPremuim`);
     }, ms);
     console.log(` ╔═══╗──╔╗ |> Name: ${client.user.username}`);
  console.log(` ║╔═╗║──║║ |> Servers: ${client.guilds.size}`);
@@ -94,8 +82,6 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『${prefix}avatar/صورتك او صورة الي تمنشنو』
 『${prefix}embed/يكرر الي تقولو بشكل حلو』 
 『${prefix}emoji <any things>/لتحويل اي كلمه تقولها الي ايموجي』
-『${prefix}inv/لدعوة البوت الى سيرفرك』
-『${prefix}support/سيرفر الدعم』
 『${prefix}contact/ارسال اقتراح او لمراسلة صاحب البوت』
 **
   `
@@ -354,7 +340,7 @@ client.on('message', function(msg) {
             .setAuthor(client.user.username,client.user.avatarURL)
             .setThumbnail(client.user.avatarURL)
             .setColor('RANDOM')
-            .setTitle('``INFO Fearless Bot`` ')
+            .setTitle('``INFO [ ${client.user.tag} ] Bot`` ')
             .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
             .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
             .addField('``servers``', [client.guilds.size], true)
@@ -362,15 +348,15 @@ client.on('message', function(msg) {
             .addField('``Users``' ,`[ ${client.users.size} ]` , true)
             .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
             .addField('``My ID``' , `[ ${client.user.id} ]` , true)
-			      .addField('``My Prefix``' , `[ F. ]` , true)
+			      .addField('``My Prefix``' , `[ - ]` , true)
 			      .addField('``My Language``' , `[ Java Script ]` , true)
-			      .setFooter('By | Abdallah')
+			      .setFooter('By | Abdallah | Fearless Bot Premuim | End In : ForEver')
     })
 }
 });
  client.on('message', message => {
               if (!message.channel.guild) return;
-      if(message.content =='F.count')
+      if(message.content =='-count')
 	 
       message.reply(`**${message.guild.memberCount}**`);
     });
@@ -437,7 +423,7 @@ client.on('message', msg => {
 };
 });
 client.on('message', message => {
-    if (message.content.startsWith("F.trans")) {
+    if (message.content.startsWith("-trans")) {
       
     let toTrans = message.content.split(' ').slice(1);
     let language;
@@ -543,7 +529,7 @@ if (command == "z5rf") {
 });
 
 client.on('message', message => {
-    if (message.content === "F.rooms") {
+    if (message.content === "-rooms") {
         if (message.author.bot) return
                       if (!message.guild) return;
 
@@ -707,13 +693,13 @@ message.channel.send({embed});
 }
 });
 client.on('message', message => {
-    if (message.content.startsWith("F.bans")) {
+    if (message.content.startsWith("-bans")) {
         message.guild.fetchBans()
         .then(bans => message.channel.send(`Number of banned persons **${bans.size}** `))
 }
 });
 client.on('message', message => {
-    if (message.content.startsWith("F.avatar")) {
+    if (message.content.startsWith("-avatar")) {
 if(!message.channel.guild) return;
         var mentionned = message.mentions.users.first();
     var client;
@@ -766,27 +752,10 @@ message.channel.send(
 );
 };
 });
-client.on('message', message => {
-                if(message.content === prefix + "inv") {
-                    let embed = new Discord.RichEmbed ()
-                    embed.setTitle("**:arrow_right: Invite Fearless Bot!**")
-                    .setURL("https://discordapp.com/oauth2/authorize?client_id=545648999940751361&scope=bot&permissions=8");
-                   message.channel.sendEmbed(embed);
-                  }
-});
 
 
-   client.on('message', message => {
-     if (message.content === "F.support") {
-     let embed = new Discord.RichEmbed()
-  .setAuthor(message.author.username)
-  .setColor("#9B59B6")
-  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/2DVwW5f**")
-     
-     
-  message.channel.sendEmbed(embed);
-    }
-});
+
+
 client.on('message' , message => {
 if (message.author.bot) return;
 if (message.content.startsWith(prefix + "contact")) {
@@ -1245,7 +1214,7 @@ if(bz.content.startsWith(prefix + 'make')) {
        });
 client.on('message', message => {
           let args = message.content.split(' ').slice(1);
-   if(message.content.split(' ')[0] == 'F.color'){
+   if(message.content.split(' ')[0] == '-color'){
            const embedd = new Discord.RichEmbed()
      .setFooter('Requested by '+message.author.username, message.author.avatarURL)
    .setDescription(`**There's No Color With This Number ** :x: `)
@@ -1383,39 +1352,10 @@ if (message.content.startsWith(prefix + 'mypoints')) {
   })
 });
 client.on('message', message => {
-    if(message.content == '^vip-servers') {
-             if(!message.author.id === '283580465862934539') return;
-    var gimg;
-    var gname;
-    var gmemb;
-    var gbots;
-    var groles;
-    var servers = client.guilds;
-    servers.forEach((g)=>{
-    gname = g.name;
-    gimg = g.iconURL;
-    gmemb = g.members.size;
-    gbots = g.members.filter(m=>m.bot).size;
-    groles = g.roles.map(r=> {return r.name});
-    let serv = new Discord.RichEmbed()
-    .setAuthor(gname,gimg)
-    .setThumbnail(gimg)
-    .addField('Server Member Count',gmemb = g.members.size)
-    .setColor('RANDOM')
-    message.channel.send(`
-    Server Name : **${gname}**
-    Server MemberCount : **${gmemb} **
-            
-            `);
-          message.channel.sendEmbed(serv);
-    }) 
-    }
-    });
-client.on('message', message => {
     if (!points[message.author.id]) points[message.author.id] = { 
         points: 0,
       };
-    if (message.content == "F.ايموجى") { 
+    if (message.content == "-ايموجى") { 
         if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
     
     const type = require('./emojis.json'); 
@@ -1787,7 +1727,7 @@ if (!points[message.author.id]) points[message.author.id] = {
     points: 0,
   };
   if(!message.guild) return;
-    let id = message.author.id,prefix="F.";
+    let id = message.author.id,prefix="-";
     if (spee[id] && (new Date).getTime() - spee[id] < 15*1000) {
         let r = (new Date).getTime() - spee[id];
         r = 15*1000 - r;
@@ -1822,7 +1762,7 @@ msg.channel.send(embed).then(() => {
                   const sh = new Discord.RichEmbed()
   .setColor("04791c")
 .setDescription('**✅ |Good Job +1P**')
-.addField('Type F.mypoints', 'To Show ur Points' , true)
+.addField('Type -mypoints', 'To Show ur Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
             let won = collected.first().author; // في هذا السطر يقوم الكود بسحب الأي دي الذي قام بالأجابة اولاً
@@ -1838,28 +1778,6 @@ message.channel.sendEmbed(sh);
     })
     spee[id] = (new Date).getTime()
 }
-});
-client.on('guildCreate', guild => {
-         const embed = new Discord.RichEmbed()
-     .setColor("RED")
-     .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/oauth2/authorize?client_id=283580465862934539&scope=bot&permissions=8')
-  .setDescription(`**
-  New Server Add Fearless Bot ✅
-اسم السيرفر: ${guild.name}
-صاحب السيرفر: ${guild.owner}**`);
-client.channels.get("546814856381333526").sendEmbed(embed)
-});
-client.on('guildDelete', guild => {
-         const embed = new Discord.RichEmbed()
-     .setColor("GOLD")
-     .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/oauth2/authorize?client_id=283580465862934539&scope=bot&permissions=8')
-  .setDescription(`**
-  Server Kicked Fearless Bot :cry:
-اسم السيرفر: ${guild.name}
-صاحب السيرفر: ${guild.owner}**`);
-client.channels.get("546814856381333526").sendEmbed(embed)
 });
 var type = [
     {
@@ -1999,7 +1917,7 @@ if (!points[message.author.id]) points[message.author.id] = {
     points: 0,
   };
   if(!message.guild) return;
-    let id = message.author.id,prefix="F.";
+    let id = message.author.id,prefix="-";
     if (spee[id] && (new Date).getTime() - spee[id] < 15*1000) {
         let r = (new Date).getTime() - spee[id];
         r = 15*1000 - r;
@@ -2053,7 +1971,7 @@ message.channel.sendEmbed(sh);
 });
 client.on('message', message => {
                                 if(!message.channel.guild) return;
-                        if (message.content.startsWith('F.ping')) {
+                        if (message.content.startsWith('-ping')) {
                             if(!message.channel.guild) return;
                             var msg = `${Date.now() - message.createdTimestamp}`
                             var api = `${Math.round(client.ping)}`
@@ -2176,7 +2094,7 @@ if (!points[message.author.id]) points[message.author.id] = {
     points: 0,
   };
   if(!message.guild) return;
-    let id = message.author.id,prefix="F.";
+    let id = message.author.id,prefix="-";
     if (spee[id] && (new Date).getTime() - spee[id] < 15*1000) {
         let r = (new Date).getTime() - spee[id];
         r = 15*1000 - r;
@@ -2408,7 +2326,7 @@ const zead = [
    '*** انتظر الجزء الثاني عندما يوصل البوت 100 سيرفر , ساعدني في نشر البوت وادخل هذا السيرفر  ***'
 ];
  client.on('message', message => {
- if (message.content.startsWith('F.مريم')) {
+ if (message.content.startsWith('-مريم')) {
   var mariam= new Discord.RichEmbed()
   .setTitle("لعبة مريم ..")
   .setColor('RANDOM')
@@ -2484,7 +2402,7 @@ var Za7f = [
 ];
 
 client.on('message', message => {
- if (message.content.startsWith("F.عقاب")) {
+ if (message.content.startsWith("-عقاب")) {
               if(!message.channel.guild) return message.reply('** This command only for servers**');
 var embed = new Discord.RichEmbed()
 .setColor('RANDOM')
@@ -2849,7 +2767,7 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
  client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('F.users')){
+if (message.content.startsWith('-users')){
  if(!message.author.id === '283580465862934539') return;
 message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
 client.users.forEach(m =>{
@@ -2943,7 +2861,7 @@ client.on('message',   eyad =>{
     var  args = eyad.content.split(" ").slice(2).join(" ")
     var men = eyad.mentions.users.first()|| client.users.get(eyad.content.split(' ')[1])
     var  mas = eyad.author
-                              if(eyad.content == 'F.sar7') {
+                              if(eyad.content == '-sar7') {
                               if(eyad.channel.type === "dm"){
 if(!args) return  eyad.channel.send(":black_medium_square: **قم بوضع رسالة الصراحة **");
 if(!men) return  eyad.channel.send(":black_medium_square:**قم بوضع ايدي المراد مصارحتة , ربما يكون الشخص غير موجود في سيرفرات مشتركة بينك وبينة لذلك لن يستطيع البوت الأرسال** ");
@@ -3713,6 +3631,61 @@ function save(){
   });
  
 }
+
+
+const aprefix = "-";
+const dev = ['283580465862934539','315785995024859139'];
+client.on('message', message => {
+    var arg = message.content.split(` `).slice(1).join(' ');
+      if (!dev.includes(message.author.id)) return;
+     
+  if (message.content.startsWith(aprefix + 'setg')) {
+    client.user.setGame(arg);
+      message.channel.send(``)
+  } else
+  if (message.content.startsWith(aprefix + 'setw')) {
+  client.user.setActivity(arg, {type:'WATCHING'});
+      message.channel.send(``)
+  } else
+  if (message.content.startsWith(aprefix + 'setl')) {
+  client.user.setActivity(arg , {type:'LISTENING'});
+      message.channel.send(``)
+  } else
+  if (message.content.startsWith(aprefix + 'sets')){
+    client.user.setGame(arg, "https://www.twitch.tv/bot");
+      message.channel.send(``)
+  } else
+  if (message.content.startsWith(aprefix + 'setname')) { //لتغير اسم البوت
+  client.user.setUsername(arg).then
+      message.channel.send(``)
+} else
+ 
+if (message.content.startsWith(aprefix + 'setavatar')) { //لتغير صورة البوت
+  client.user.setAvatar(arg);
+    message.channel.send(``);
+} else
+ 
+if (message.content.startsWith(aprefix + 'setonline')) { //لتغير حالت البوت لي  online
+client.user.setStatus("online")
+    message.channel.send(``);
+} else
+   
+if (message.content.startsWith(aprefix + 'setdnd')) { //~~~ dnd
+client.user.setStatus("dnd")
+    message.channel.send(``);
+} else
+   
+if (message.content.startsWith(aprefix + 'setidle')) { //~~~ idle
+client.user.setStatus("idle")
+    message.channel.send(``);
+} else
+ 
+if (message.content.startsWith(aprefix + 'setoffline')) { //~~~ offline
+client.user.setStatus("offline")
+    message.channel.send(``);
+}
+});
+
 
 
 
