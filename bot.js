@@ -205,6 +205,7 @@ var times_name = {
     "h": "الساعات",
     "d": "الأيام"
 }
+
 console.log('Alarm Code . By NorElden..');
 client.on('message',( message )=>{
     if( message.content.startsWith( prefix + 'alarm' ) ){
@@ -3651,6 +3652,6 @@ client.user.setStatus("offline")
 
 
 
-//Fearless
+
 
 client.login(process.env.BOT_TOKEN)
