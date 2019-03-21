@@ -49,6 +49,13 @@ var ti={}
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
     let pages = [`
+***__اشتراك البوت__***
+**
+مدفوع  :money_with_wings:
+رقم البروميوم : 1
+صاحب البروميوم : <@283580465862934539>
+ينتهي البروميوم في يوم : 2019-05-21
+**
 ***__وصف عن البوت__***
 **
 :gem:  البوت فيه كثير ميزات حلوة و جميلة
@@ -353,7 +360,7 @@ client.on('message', function(msg) {
             .addField('``My ID``' , `[ ${client.user.id} ]` , true)
 			      .addField('``My Prefix``' , `[ - ]` , true)
 			      .addField('``My Language``' , `[ Java Script ]` , true)
-			      .setFooter('By | Abdallah | Fearless Bot Premuim | End In : ForEver')
+			      .setFooter('By | Abdallah | Fearless Bot Premuim | Ends In : 2019-05-21')
     })
 }
 });
@@ -3596,7 +3603,7 @@ function save(){
  
 }
 
-
+//premium
 
 
 
